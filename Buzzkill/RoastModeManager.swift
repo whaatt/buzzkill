@@ -237,7 +237,13 @@ final class RoastModeManager: ObservableObject {
       return true
     }
     if #available(macOS 10.15, *) {
-      promptForScreenCaptureAuthorization()
+      if !AppSettings.shared.roast.didRequestScreenCaptureAccess {
+        AppSettings.shared.roast.didRequestScreenCaptureAccess = true
+        CGRequestScreenCaptureAccess()
+      } else {
+        // Fall back to app-driven prompt if we requested via the system prompt before.
+        promptForScreenCaptureAuthorization()
+      }
     }
     return false
   }

@@ -45,6 +45,7 @@ extension AppSettings {
 
     // Roast Mode defaults.
     static let roastEnabled: Bool = false
+    static let didRequestScreenCaptureAccess: Bool = false
     static let roastIntervalSeconds: Double = 15.0
     static let roastMinIntervalSeconds: Double = 5.0
     static let roastMaxIntervalSeconds: Double = 120.0
@@ -251,11 +252,13 @@ extension AppSettings {
     var apiKey: String?  // When nil or empty, Roast Mode is not configured.
     var isEnabled: Bool
     var frequencySeconds: Double  // 5 to 120 (whole seconds only).
+    var didRequestScreenCaptureAccess: Bool
 
     static let defaults = RoastSettings(
       apiKey: nil,
       isEnabled: AppSettings.Defaults.roastEnabled,
-      frequencySeconds: AppSettings.Defaults.roastIntervalSeconds
+      frequencySeconds: AppSettings.Defaults.roastIntervalSeconds,
+      didRequestScreenCaptureAccess: AppSettings.Defaults.didRequestScreenCaptureAccess
     )
 
     private static let key = "bk.roast"
