@@ -1,0 +1,14 @@
+.build/
+.DS_Store
+*.dSYM
+*.dSYM.zip
+*.hmap
+*.ipa
+Carthage/Build/
+fastlane/Preview.html
+fastlane/report.xml
+fastlane/screenshots/**/*.png
+fastlane/test_output
+playground.xcworkspace
+timeline.xctimeline
+xcuserdata/

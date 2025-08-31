@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLName</key>
+        <string>buzzkill</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>buzzkill</string>
+        </array>
+      </dict>
+    </array>
+    <key>SUPublicEDKey</key>
+    <string>9nC3IocQUGPTy4qGZcDGXdxW1q764vtc3y1gEIYjtE4=</string>
+    <key>SUFeedURL</key>
+    <string>https://whaatt.github.io/buzzkill/appcast.xml</string>
+    <key>SUVerifyUpdateBeforeExtraction</key>
+    <string>YES</string>
+    <key>SUScheduledCheckInterval</key>
+    <integer>3600</integer>
+    <key>SUEnableInstallerLauncherService</key>
+    <string>YES</string>
+  </dict>
+</plist>

@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		461F39B62E63A81F009C384C /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 461F39B52E63A81F009C384C /* Sparkle */; };
+		46CF20762E5A924F00495AE1 /* FlyingFox in Frameworks */ = {isa = PBXBuildFile; productRef = 46CF20752E5A924F00495AE1 /* FlyingFox */; };
+		46CF20782E5A924F00495AE1 /* FlyingSocks in Frameworks */ = {isa = PBXBuildFile; productRef = 46CF20772E5A924F00495AE1 /* FlyingSocks */; };
+		46F1A8CA2E5A929400DB5EA1 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 46F1A8C92E5A929400DB5EA1 /* KeyboardShortcuts */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		466EE5B22E1B96AC00E1BD52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 466EE59B2E1B96A900E1BD52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 466EE5A22E1B96A900E1BD52;
+			remoteInfo = Buzzkill;
+		};
+		466EE5BC2E1B96AC00E1BD52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 466EE59B2E1B96A900E1BD52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 466EE5A22E1B96A900E1BD52;
+			remoteInfo = Buzzkill;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		466EE5A32E1B96A900E1BD52 /* Buzzkill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Buzzkill.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		466EE5B12E1B96AC00E1BD52 /* BuzzkillTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuzzkillTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		466EE5BB2E1B96AC00E1BD52 /* BuzzkillUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuzzkillUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		46DDD86A2E51BA3800D8BFE1 /* Exceptions for "Buzzkill" folder in "Buzzkill" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 466EE5A22E1B96A900E1BD52 /* Buzzkill */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		466EE5A52E1B96A900E1BD52 /* Buzzkill */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				46DDD86A2E51BA3800D8BFE1 /* Exceptions for "Buzzkill" folder in "Buzzkill" target */,
+			);
+			path = Buzzkill;
+			sourceTree = "<group>";
+		};
+		466EE5B42E1B96AC00E1BD52 /* BuzzkillTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BuzzkillTests;
+			sourceTree = "<group>";
+		};
+		466EE5BE2E1B96AC00E1BD52 /* BuzzkillUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BuzzkillUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		466EE5A02E1B96A900E1BD52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46CF20762E5A924F00495AE1 /* FlyingFox in Frameworks */,
+				461F39B62E63A81F009C384C /* Sparkle in Frameworks */,
+				46CF20782E5A924F00495AE1 /* FlyingSocks in Frameworks */,
+				46F1A8CA2E5A929400DB5EA1 /* KeyboardShortcuts in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466EE5AE2E1B96AC00E1BD52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466EE5B82E1B96AC00E1BD52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		461F39B22E63A80F009C384C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		466EE59A2E1B96A900E1BD52 = {
+			isa = PBXGroup;
+			children = (
+				466EE5A52E1B96A900E1BD52 /* Buzzkill */,
+				466EE5B42E1B96AC00E1BD52 /* BuzzkillTests */,
+				466EE5BE2E1B96AC00E1BD52 /* BuzzkillUITests */,
+				461F39B22E63A80F009C384C /* Frameworks */,
+				466EE5A42E1B96A900E1BD52 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		466EE5A42E1B96A900E1BD52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				466EE5A32E1B96A900E1BD52 /* Buzzkill.app */,
+				466EE5B12E1B96AC00E1BD52 /* BuzzkillTests.xctest */,
+				466EE5BB2E1B96AC00E1BD52 /* BuzzkillUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		466EE5A22E1B96A900E1BD52 /* Buzzkill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466EE5C52E1B96AC00E1BD52 /* Build configuration list for PBXNativeTarget "Buzzkill" */;
+			buildPhases = (
+				466EE59F2E1B96A900E1BD52 /* Sources */,
+				466EE5A02E1B96A900E1BD52 /* Frameworks */,
+				466EE5A12E1B96A900E1BD52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				466EE5A52E1B96A900E1BD52 /* Buzzkill */,
+			);
+			name = Buzzkill;
+			packageProductDependencies = (
+				46CF20752E5A924F00495AE1 /* FlyingFox */,
+				46CF20772E5A924F00495AE1 /* FlyingSocks */,
+				46F1A8C92E5A929400DB5EA1 /* KeyboardShortcuts */,
+				461F39B52E63A81F009C384C /* Sparkle */,
+			);
+			productName = Buzzkill;
+			productReference = 466EE5A32E1B96A900E1BD52 /* Buzzkill.app */;
+			productType = "com.apple.product-type.application";
+		};
+		466EE5B02E1B96AC00E1BD52 /* BuzzkillTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466EE5C82E1B96AC00E1BD52 /* Build configuration list for PBXNativeTarget "BuzzkillTests" */;
+			buildPhases = (
+				466EE5AD2E1B96AC00E1BD52 /* Sources */,
+				466EE5AE2E1B96AC00E1BD52 /* Frameworks */,
+				466EE5AF2E1B96AC00E1BD52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				466EE5B32E1B96AC00E1BD52 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				466EE5B42E1B96AC00E1BD52 /* BuzzkillTests */,
+			);
+			name = BuzzkillTests;
+			packageProductDependencies = (
+			);
+			productName = BuzzkillTests;
+			productReference = 466EE5B12E1B96AC00E1BD52 /* BuzzkillTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		466EE5BA2E1B96AC00E1BD52 /* BuzzkillUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466EE5CB2E1B96AC00E1BD52 /* Build configuration list for PBXNativeTarget "BuzzkillUITests" */;
+			buildPhases = (
+				466EE5B72E1B96AC00E1BD52 /* Sources */,
+				466EE5B82E1B96AC00E1BD52 /* Frameworks */,
+				466EE5B92E1B96AC00E1BD52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				466EE5BD2E1B96AC00E1BD52 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				466EE5BE2E1B96AC00E1BD52 /* BuzzkillUITests */,
+			);
+			name = BuzzkillUITests;
+			packageProductDependencies = (
+			);
+			productName = BuzzkillUITests;
+			productReference = 466EE5BB2E1B96AC00E1BD52 /* BuzzkillUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		466EE59B2E1B96A900E1BD52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					466EE5A22E1B96A900E1BD52 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					466EE5B02E1B96AC00E1BD52 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 466EE5A22E1B96A900E1BD52;
+					};
+					466EE5BA2E1B96AC00E1BD52 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 466EE5A22E1B96A900E1BD52;
+					};
+				};
+			};
+			buildConfigurationList = 466EE59E2E1B96A900E1BD52 /* Build configuration list for PBXProject "Buzzkill" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 466EE59A2E1B96A900E1BD52;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				46CF20742E5A924F00495AE1 /* XCRemoteSwiftPackageReference "FlyingFox" */,
+				46F1A8C82E5A929400DB5EA1 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				461F39B12E63A729009C384C /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 466EE5A42E1B96A900E1BD52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				466EE5A22E1B96A900E1BD52 /* Buzzkill */,
+				466EE5B02E1B96AC00E1BD52 /* BuzzkillTests */,
+				466EE5BA2E1B96AC00E1BD52 /* BuzzkillUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		466EE5A12E1B96A900E1BD52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466EE5AF2E1B96AC00E1BD52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466EE5B92E1B96AC00E1BD52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		466EE59F2E1B96A900E1BD52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466EE5AD2E1B96AC00E1BD52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466EE5B72E1B96AC00E1BD52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		466EE5B32E1B96AC00E1BD52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 466EE5A22E1B96A900E1BD52 /* Buzzkill */;
+			targetProxy = 466EE5B22E1B96AC00E1BD52 /* PBXContainerItemProxy */;
+		};
+		466EE5BD2E1B96AC00E1BD52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 466EE5A22E1B96A900E1BD52 /* Buzzkill */;
+			targetProxy = 466EE5BC2E1B96AC00E1BD52 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		466EE5C32E1B96AC00E1BD52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ARTZRAJ6Z2;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		466EE5C42E1B96AC00E1BD52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ARTZRAJ6Z2;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		466EE5C62E1B96AC00E1BD52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Buzzkill/Buzzkill.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Buzzkill/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Buzzkill;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skalon.Buzzkill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		466EE5C72E1B96AC00E1BD52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Buzzkill/Buzzkill.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Buzzkill/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Buzzkill;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skalon.Buzzkill;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		466EE5C92E1B96AC00E1BD52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ARTZRAJ6Z2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skalon.BuzzkillTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Buzzkill.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Buzzkill";
+			};
+			name = Debug;
+		};
+		466EE5CA2E1B96AC00E1BD52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ARTZRAJ6Z2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skalon.BuzzkillTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Buzzkill.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Buzzkill";
+			};
+			name = Release;
+		};
+		466EE5CC2E1B96AC00E1BD52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ARTZRAJ6Z2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skalon.BuzzkillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Buzzkill;
+			};
+			name = Debug;
+		};
+		466EE5CD2E1B96AC00E1BD52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ARTZRAJ6Z2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skalon.BuzzkillUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Buzzkill;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		466EE59E2E1B96A900E1BD52 /* Build configuration list for PBXProject "Buzzkill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466EE5C32E1B96AC00E1BD52 /* Debug */,
+				466EE5C42E1B96AC00E1BD52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466EE5C52E1B96AC00E1BD52 /* Build configuration list for PBXNativeTarget "Buzzkill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466EE5C62E1B96AC00E1BD52 /* Debug */,
+				466EE5C72E1B96AC00E1BD52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466EE5C82E1B96AC00E1BD52 /* Build configuration list for PBXNativeTarget "BuzzkillTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466EE5C92E1B96AC00E1BD52 /* Debug */,
+				466EE5CA2E1B96AC00E1BD52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466EE5CB2E1B96AC00E1BD52 /* Build configuration list for PBXNativeTarget "BuzzkillUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466EE5CC2E1B96AC00E1BD52 /* Debug */,
+				466EE5CD2E1B96AC00E1BD52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		461F39B12E63A729009C384C /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+		46CF20742E5A924F00495AE1 /* XCRemoteSwiftPackageReference "FlyingFox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swhitty/FlyingFox.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.24.1;
+			};
+		};
+		46F1A8C82E5A929400DB5EA1 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		461F39B52E63A81F009C384C /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 461F39B12E63A729009C384C /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		46CF20752E5A924F00495AE1 /* FlyingFox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46CF20742E5A924F00495AE1 /* XCRemoteSwiftPackageReference "FlyingFox" */;
+			productName = FlyingFox;
+		};
+		46CF20772E5A924F00495AE1 /* FlyingSocks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46CF20742E5A924F00495AE1 /* XCRemoteSwiftPackageReference "FlyingFox" */;
+			productName = FlyingSocks;
+		};
+		46F1A8C92E5A929400DB5EA1 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46F1A8C82E5A929400DB5EA1 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 466EE59B2E1B96A900E1BD52 /* Project object */;
+}

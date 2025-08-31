@@ -1,0 +1,265 @@
+name: Release New Version
+
+on:
+  # Trigger a build when a tag (`vX.Y.Z`) is pushed.
+  push:
+    tags:
+      - "v*.*.*"
+  # Trigger a specific version build manually.
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: The version to release (`vX.Y.Z`) manually
+        required: true
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-sign-notarize-release:
+    runs-on: macos-latest
+
+    env:
+      # Change these:
+      # Constants.
+      APP_NAME: "Buzzkill"
+      SCHEME: "Buzzkill"
+      BUNDLE_ID: "com.skalon.Buzzkill"
+
+      # Secrets (add in GH repository settings).
+      # - CERT_P12 (Apple Developer ID Certificate)
+      # - TEAM_ID (Certificate Team ID)
+      # - CERT_PASSWORD (Apple Developer ID Certificate Password)
+      # - APPLE_ISSUER_ID (App Store Connect API Issuer ID)
+      # - APPLE_KEY_ID (App Store Connect API Key ID)
+      # - APPLE_PRIVATE_KEY (App Store Connect API Key Private Key)
+      # - SPARKLE_PRIVATE_KEY (Sparkle Appcast Private Key)
+      # - KEYCHAIN_PASSWORD (Arbitrary Keychain Password)
+
+      # Don't change these (usually):
+      # Build and package configuration.
+      VERSION_PREFIXED: ${{ github.event.inputs.version || github.ref_name }}
+      ARCHIVE_PATH: build/${{ github.event.inputs.version || github.ref_name }}.xcarchive
+      EXPORT_PATH: build/export
+      ARTIFACTS_DIR: build/artifacts
+
+      # Keychain configuration.
+      KEYCHAIN_PATH: build.keychain
+      KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+
+      # Sparkle configuration.
+      SPARKLE_VERSION: 2.7.1
+
+    steps:
+      - name: Pull ref
+        uses: actions/checkout@v4
+
+      - name: Select XCode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Validate version input
+        run: |
+          if [[ ! "${{ env.VERSION_PREFIXED }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Version must be in the format \`vX.Y.Z\`"
+            exit 1
+          fi
+
+      - name: Parse version from tag or input
+        run: |
+          VERSION_UNPREFIXED="${VERSION_PREFIXED#v}"
+          # Set semantic (marketing) version for XCode.
+          echo "MARKETING_VERSION=$VERSION_UNPREFIXED" >> $GITHUB_ENV
+
+          # Transform semantic version to build number: 1.2.3 -> 10203.
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION_UNPREFIXED"
+          BUILD_NUMBER=$((10#${MAJOR}*10000 + 10#${MINOR}*100 + 10#${PATCH}))
+
+          # Set build version for XCode.
+          echo "CURRENT_PROJECT_VERSION=$BUILD_NUMBER" >> $GITHUB_ENV
+
+          # Log parsed versions.
+          echo "Parsed Marketing Version=$MARKETING_VERSION"
+          echo "Parsed Project Version=$CURRENT_PROJECT_VERSION"
+
+      - name: Install DMG tool
+        run: |
+          brew install graphicsmagick imagemagick
+          npm install --global create-dmg
+
+      - name: Install Sparkle tools
+        run: |
+          curl -L https://github.com/sparkle-project/Sparkle/releases/download/${{ env.SPARKLE_VERSION }}/Sparkle-${{ env.SPARKLE_VERSION }}.tar.xz -o Sparkle.tar.xz
+          mkdir -p Sparkle
+          tar -xf Sparkle.tar.xz -C Sparkle
+          sudo cp -a Sparkle/bin/* /usr/local/bin/
+          which generate_appcast
+
+      - name: Create temporary keychain and import certificate
+        env:
+          CERT_P12: ${{ secrets.CERT_P12 }}
+          CERT_PASSWORD: ${{ secrets.CERT_PASSWORD }}
+          CERT_DECODED_PATH: cert.p12
+        run: |
+          # Create temporary keychain.
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          # Decode certificate.
+          echo -n "$CERT_P12" | base64 --decode > $CERT_DECODED_PATH
+
+          # Import certificate to keychain.
+          security import $CERT_DECODED_PATH -P "$CERT_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
+      - name: Build archive for release
+        run: |
+          xcodebuild \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -archivePath "$ARCHIVE_PATH" \
+            -derivedDataPath build/DerivedData \
+            -destination "generic/platform=macOS" \
+            clean archive \
+            MARKETING_VERSION="${MARKETING_VERSION}" \
+            CURRENT_PROJECT_VERSION="${CURRENT_PROJECT_VERSION}"
+
+      - name: Export app bundle
+        run: |
+          mkdir -p "$EXPORT_PATH"
+          cat > exportOptions.plist <<EOF
+            <?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" \
+              "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+            <plist version="1.0">
+            <dict>
+              <key>signingStyle</key>
+              <string>manual</string>
+              <key>method</key>
+              <string>developer-id</string>
+              <key>teamID</key>
+              <string>${{ secrets.TEAM_ID }}</string>
+              <key>stripSwiftSymbols</key>
+              <true/>
+              <key>compileBitcode</key>
+              <false/>
+            </dict>
+            </plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$ARCHIVE_PATH" \
+            -exportPath "$EXPORT_PATH" \
+            -exportOptionsPlist exportOptions.plist
+          ls -la "$EXPORT_PATH"
+
+      - name: Verify code signature
+        run: |
+          APP_PATH=$(ls -d "$EXPORT_PATH"/*.app | head -n1)
+          echo "APP_PATH=$APP_PATH" >> $GITHUB_ENV
+          codesign --verify --deep --strict --verbose=2 "$APP_PATH"
+
+      - name: Create DMG
+        run: |
+          DMG_NAME="Buzzkill-${MARKETING_VERSION}.dmg"
+          echo "DMG_NAME=$DMG_NAME" >> $GITHUB_ENV
+          mkdir -p "$ARTIFACTS_DIR"
+          rm -f "$ARTIFACTS_DIR/$DMG_NAME"
+          create-dmg "$APP_PATH" "$ARTIFACTS_DIR"
+          mv "$ARTIFACTS_DIR"/*.dmg "$ARTIFACTS_DIR/$DMG_NAME"
+          ls -la "$ARTIFACTS_DIR"
+
+      - name: Notarize DMG
+        env:
+          APPLE_ISSUER_ID: ${{ secrets.APPLE_ISSUER_ID }}
+          APPLE_KEY_ID: ${{ secrets.APPLE_KEY_ID }}
+          APPLE_PRIVATE_KEY: ${{ secrets.APPLE_PRIVATE_KEY }}
+        run: |
+          echo "$APPLE_PRIVATE_KEY" > temporary.p8
+          xcrun notarytool submit "$ARTIFACTS_DIR/$DMG_NAME" \
+            --issuer "$APPLE_ISSUER_ID" \
+            --key-id "$APPLE_KEY_ID" \
+            --key temporary.p8 \
+            --wait --progress
+
+      - name: Staple DMG
+        run: |
+          xcrun stapler staple "$ARTIFACTS_DIR/$DMG_NAME"
+
+      - name: Verify notarization
+        run: |
+          xcrun stapler validate "$ARTIFACTS_DIR/$DMG_NAME"
+          spctl --assess --type execute -vv "$APP_PATH"
+
+      - name: Create ZIP archive
+        run: |
+          ZIP_NAME="Buzzkill-${MARKETING_VERSION}.zip"
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+          ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" "$ARTIFACTS_DIR/$ZIP_NAME" || true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.VERSION_PREFIXED }}
+          name: ${{ env.APP_NAME }} ${{ env.MARKETING_VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            ${{ env.ARTIFACTS_DIR }}/${{ env.DMG_NAME }}
+            ${{ env.ARTIFACTS_DIR }}/${{ env.ZIP_NAME }}
+
+      - name: Generate Sparkle appcast
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          mkdir -p appcast_out
+          cp "$ARTIFACTS_DIR/$DMG_NAME" appcast_out/
+          echo "$SPARKLE_PRIVATE_KEY" > ed25519_private.pem
+          DOWNLOAD_PREFIX="https://github.com/${{ github.repository }}/releases/download/${{ env.VERSION_PREFIXED }}/${{ env.DMG_NAME }}"
+          generate_appcast \
+            --ed-key-file ed25519_private.pem \
+            --download-url-prefix "$DOWNLOAD_PREFIX" \
+            --maximum-versions 1 \
+            appcast_out
+
+      - name: Patch appcast with GitHub URL for release notes
+        run: |
+          RELEASE_NOTES_URL="https://github.com/${{ github.repository }}/releases/tag/${{ env.VERSION_PREFIXED }}"
+          sed -i '' -E "/<title>[0-9]+\.[0-9]+\.[0-9]+<\/title>/a\\
+          <sparkle:releaseNotesLink>${RELEASE_NOTES_URL}</sparkle:releaseNotesLink>
+          " appcast_out/appcast.xml
+
+      - name: Upload appcast artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: appcast
+          path: appcast_out/appcast.xml
+
+      - name: Delete temporary keychain
+        run: |
+          security delete-keychain $KEYCHAIN_PATH
+
+  deploy-appcast:
+    needs: build-sign-notarize-release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download appcast artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: appcast
+          path: public
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages-${{ github.run_number }}-${{ github.run_attempt }}
+          path: public
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_number }}-${{ github.run_attempt }}

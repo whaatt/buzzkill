@@ -1,0 +1,33 @@
+{
+  "originHash" : "c34dd2b7347495cc369d00d487ffb67a4aa3a43907f779d922053dcaadcf6b1b",
+  "pins" : [
+    {
+      "identity" : "flyingfox",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swhitty/FlyingFox.git",
+      "state" : {
+        "revision" : "de429870282bed7b01bf6c384f5f29d55907aa10",
+        "version" : "0.24.1"
+      }
+    },
+    {
+      "identity" : "keyboardshortcuts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
+      "state" : {
+        "revision" : "045cf174010beb335fa1d2567d18c057b8787165",
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "sparkle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparkle-project/Sparkle",
+      "state" : {
+        "revision" : "df074165274afaa39539c05d57b0832620775b11",
+        "version" : "2.7.1"
+      }
+    }
+  ],
+  "version" : 3
+}
