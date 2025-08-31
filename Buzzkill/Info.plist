@@ -23,5 +23,7 @@
     <integer>3600</integer>
     <key>SUEnableInstallerLauncherService</key>
     <string>YES</string>
+    <key>SUEnableJavaScript</key>
+    <string>YES</string>
   </dict>
 </plist>
