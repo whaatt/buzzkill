@@ -40,8 +40,9 @@ extension AppSettings {
     // Keep these values in sync with `IntentsManager` literals!
     static let timeTrialInitialCount: Int = 10
 
-    // Startup defaults.
-    static let startupLaunchAtLogin: Bool = false
+    // System defaults.
+    static let systemLaunchAtLogin: Bool = false
+    static let systemShowDebugElements: Bool = false
 
     // Roast Mode defaults.
     static let roastEnabled: Bool = false
@@ -78,8 +79,8 @@ final class AppSettings: ObservableObject {
     didSet { TimeTrialSettings.save(timeTrial) }
   }
 
-  @Published var startup = StartupSettings.load() {
-    didSet { StartupSettings.save(startup) }
+  @Published var system = SystemSettings.load() {
+    didSet { SystemSettings.save(system) }
   }
 
   @Published var roast = RoastSettings.load() {
@@ -99,7 +100,7 @@ final class AppSettings: ObservableObject {
       initialCount: AppSettings.TimeTrialSettings.defaults.initialCount,
       recordsByInitialCount: preservedRecords
     )
-    startup = .defaults
+    system = .defaults
     roast = .defaults
     disclosureGroup = .defaults
   }
@@ -220,24 +221,28 @@ extension AppSettings {
   }
 }
 
-// MARK: - Startup (Login Item) Settings Management
+// MARK: - System Settings Management
 
 extension AppSettings {
-  struct StartupSettings: Codable, Equatable {
+  struct SystemSettings: Codable, Equatable {
     var launchAtLogin: Bool
+    var showDebugElements: Bool
 
-    static let defaults = StartupSettings(launchAtLogin: AppSettings.Defaults.startupLaunchAtLogin)
+    static let defaults = SystemSettings(
+      launchAtLogin: AppSettings.Defaults.systemLaunchAtLogin,
+      showDebugElements: AppSettings.Defaults.systemShowDebugElements
+    )
 
-    private static let key = "bk.startup"
+    private static let key = "bk.system"
 
-    static func load() -> StartupSettings {
+    static func load() -> SystemSettings {
       guard let data = UserDefaults.standard.data(forKey: key) else {
         return .defaults
       }
-      return (try? JSONDecoder().decode(StartupSettings.self, from: data)) ?? .defaults
+      return (try? JSONDecoder().decode(SystemSettings.self, from: data)) ?? .defaults
     }
 
-    static func save(_ value: StartupSettings) {
+    static func save(_ value: SystemSettings) {
       if let data = try? JSONEncoder().encode(value) {
         UserDefaults.standard.set(data, forKey: key)
       }

@@ -191,6 +191,7 @@ class Fly: ObservableObject, Identifiable {
 
   @Published var position: CGPoint
   @Published var isAlive: Bool = true
+  @Published var inBatchKill: Bool = false
   @Published var wingFrame: Int = 0
   @Published var facingRight: Bool = true
   @Published var rotation: Double = 0.0  // In degrees.
@@ -285,6 +286,7 @@ class Fly: ObservableObject, Identifiable {
       return
     }
     isAlive = false
+    inBatchKill = isBatchKill
 
     createGoopSplatter(angle: angle, isBatchKill: isBatchKill)
     suppressDeathSound = isBatchKill

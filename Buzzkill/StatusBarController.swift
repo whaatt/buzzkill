@@ -841,12 +841,18 @@ struct StatusBarContentView: View {
               )
             ) {
               VStack(alignment: .leading, spacing: 8) {
-                Toggle("Launch at login", isOn: $settings.startup.launchAtLogin)
-                  .onChange(of: settings.startup.launchAtLogin) { oldValue, newValue in
+                Toggle("Launch at login", isOn: $settings.system.launchAtLogin)
+                  .onChange(of: settings.system.launchAtLogin) { oldValue, newValue in
                     configureLaunchAtLogin(
                       desiredEnabled: newValue,
                       previousEnabled: oldValue
                     )
+                  }
+                  .hoverAccentCheckbox()
+                  .disabled(isTimeTrialActive)
+                Toggle("Show debug elements", isOn: $settings.system.showDebugElements)
+                  .onChange(of: settings.system.showDebugElements) { _, newValue in
+                    settings.system.showDebugElements = newValue
                   }
                   .hoverAccentCheckbox()
                   .disabled(isTimeTrialActive)
@@ -946,7 +952,7 @@ struct StatusBarContentView: View {
     .onReceive(
       settings.$spawn
         .removeDuplicates()
-        .debounce(for: .milliseconds(150), scheduler: RunLoop.main)
+        .debounce(for: .milliseconds(0), scheduler: RunLoop.main)
     ) { _ in
       if !isTimeTrialActive {
         applySpawnSettingsToRuntime()
@@ -996,17 +1002,17 @@ struct StatusBarContentView: View {
         }
       } catch {
         // Revert toggle on failure to reflect actual system state.
-        settings.startup.launchAtLogin = previousEnabled
+        settings.system.launchAtLogin = previousEnabled
       }
     } else {
       // Not supported on older macOS via this API; revert state.
-      settings.startup.launchAtLogin = previousEnabled
+      settings.system.launchAtLogin = previousEnabled
     }
   }
 
   private func syncLaunchAtLoginFromSystem() {
     if #available(macOS 13.0, *) {
-      settings.startup.launchAtLogin = (SMAppService.mainApp.status == .enabled)
+      settings.system.launchAtLogin = (SMAppService.mainApp.status == .enabled)
     }
   }
 

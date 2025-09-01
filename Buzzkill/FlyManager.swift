@@ -290,6 +290,11 @@ class FlyManager: ObservableObject {
     // if the initial count changed while in Auto-Spawn mode).
     resetSpawnTimer()
     if mode == .auto && (gotModeChange || gotInitialCountChange) {
+      // Get rid of batch goop to improve performance when spawning a large number of flies.
+      // TODO: Uncomment if this actually feels necessary in the future.
+      // flies.removeAll { fly in
+      //   !fly.isAlive && fly.inBatchKill
+      // }
       ensureInitialPopulation(count: initialCount)
     }
   }

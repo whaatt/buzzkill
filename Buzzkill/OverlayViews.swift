@@ -37,14 +37,14 @@ struct FlyView: View {
             x: particle.position.x - particle.size / 2.0,
             y: particle.position.y - particle.size / 2.0,
             width: particle.size,
-            height: particle.size)
+            height: particle.size
+          )
           context.fill(
             Ellipse().path(in: rect),
             with: .color(randomPastel)
           )
         }
       }
-      .drawingGroup()
       .opacity(fly.goopOpacity)
       .blendMode(.difference)
 
@@ -536,6 +536,12 @@ struct OverlayContentView: View {
           .font(.system(size: 72, weight: .heavy))
           .foregroundColor(.white)
           .shadow(color: .black.opacity(0.9), radius: 8)
+      }
+
+      // FPS debug overlay.
+      if AppSettings.shared.system.showDebugElements {
+        FrameRateDebugView(smoothingFactor: 0.1)
+          .offset(x: 8, y: 8)
       }
     }
     .onAppear {
