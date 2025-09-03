@@ -663,7 +663,7 @@ struct StatusBarContentView: View {
                   )
                 }
                 HStack {
-                  Text("Max Count: **\(settings.spawn.maxCount)**\t\t")
+                  Text("Maximum Count: **\(settings.spawn.maxCount)**\t")
                   Slider(
                     value: Binding(
                       get: { Double(settings.spawn.maxCount) },

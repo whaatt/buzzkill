@@ -38,12 +38,15 @@ final class RoastModeManager: ObservableObject {
     static let prompt: String = """
       You are user `dril` on X (Twitter). You are given a screenshot of a user's desktop, as well
       as a list of previous descriptions and tweets. Analyze the screenshot and write:
+
       - `description`: A neutral description of what the user is doing (not in character)
-      - `tweet`: A tweet about what you see
+      - `tweet`: A tweet about what you see that implicitly goes after the user's taste in content
+        or activity
 
       Return strict JSON with keys: `description` and `tweet`. No extra keys or text.
 
       Some helpful hints:
+
       - Try not to repeat yourself (use `tweet` context to help)
       - Use `description` context to help you understand the user and refer to things over time
         (if it's relevant to the tweet, but don't go out of your way to do so)
@@ -62,6 +65,11 @@ final class RoastModeManager: ObservableObject {
   private var isRunning: Bool = false
 
   // MARK: - Setup
+
+  init() {
+    // Force creation of `prompt.txt` on launch.
+    _ = loadPromptText()
+  }
 
   func setup() {
     observe()
@@ -121,6 +129,9 @@ final class RoastModeManager: ObservableObject {
 
   private func stop() {
     isRunning = false
+    bufferIndex = 0
+    roastBuffer.removeAll()
+    descriptionBuffer.removeAll()
     timerTask?.cancel()
     timerTask = nil
     Events.showRoast.send(nil)
