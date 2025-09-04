@@ -21,9 +21,10 @@ A fidget overlay for macOS.
   src="https://github.com/user-attachments/assets/250466ea-632e-4d76-995e-34eb2bcfc031"
 />
 
-## Download
+## Links
 
-- [Latest Release](https://github.com/whaatt/buzzkill/releases/latest)
+- [Demo Reel](https://x.com/whaatt/status/1963390172646838355) (Twitter)
+- [Download Latest Release](https://github.com/whaatt/buzzkill/releases/latest)
 
 ## Basic Usage
 
@@ -52,8 +53,6 @@ Control these features from the application panel (located in your status bar):
 **Tip:** You can always double-tap your current key combo to open the settings panel.
 
 ## Gallery
-
-Video demos TODO.
 
 <img
   width="1024"
